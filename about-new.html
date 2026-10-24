@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Northfield Design</title>
+  <meta name="description" content="Learn about Northfield Design, an independent graphic design studio based in Bristol helping businesses communicate clearly and present professionally.">
+  <meta property="og:title" content="About Us — Northfield Design">
+  <meta property="og:description" content="Good design should make a difference. Meet Northfield Design, an independent graphic design studio based in Bristol.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:#D8F36A;
+      --cream:#F5F0E7;
+      --ink:#191919;
+      --lime:#D8F36A;
+      --white:#fffdf8;
+      --line:rgba(25,25,25,.14);
+      --muted:#686861;
+      --max:1240px;
+      --radius:20px;
+      --ease:cubic-bezier(.22,.8,.22,1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid var(--lime);outline-offset:4px}
+    .container{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .mono{font-family:"DM Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:.96;letter-spacing:-.045em;margin:0}
+    h1{font-size:clamp(58px,8vw,118px);max-width:1000px}
+    h2{font-size:clamp(42px,6vw,76px)}
+    h3{font-size:26px}
+    p{margin:0}
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid transparent;transition:.35s var(--ease);background:rgba(245,240,231,.76)}
+    .site-header.scrolled{background:rgba(245,240,231,.9);backdrop-filter:blur(18px);border-color:var(--line)}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .logo{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:21px;letter-spacing:-.045em;white-space:nowrap}
+    .logo span{color:var(--lime)}
+    .nav-links{display:flex;align-items:center;gap:34px}
+    .nav-links a{position:relative;font-size:14px;font-weight:600}
+    .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;background:var(--lime);transition:right .25s var(--ease)}
+    .nav-links a:not(.nav-cta):hover::after,.nav-links a.active::after{right:0}
+    .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--lime);color:white;border:0;padding:13px 19px;border-radius:999px;font-weight:700;font-size:14px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+    .nav-cta:hover,.button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(216,243,106,.20)}
+    .menu-btn{display:none;background:none;border:0;padding:8px}
+    .menu-icon{width:25px;height:16px;display:grid;align-content:space-between}
+    .menu-icon span{height:2px;background:var(--ink);width:100%}
+    .mobile-drawer{display:none}
+    main{padding-top:82px}
+    .about-hero{padding:110px 0 120px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1fr 300px;gap:70px;align-items:end}
+    .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px;color:var(--lime)}
+    .eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
+    .hero-copy{font-size:clamp(18px,2vw,23px);max-width:650px;margin-top:35px;color:#45453f;line-height:1.45}
+    .hero-note{align-self:end;border-left:2px solid var(--lime);padding-left:20px}
+    .hero-note strong{display:block;font-family:"Space Grotesk";font-size:27px;line-height:1.05;margin-bottom:9px}
+    .hero-note p{font-size:14px;color:var(--muted)}
+    .lime-orb{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(216,243,106,.16),transparent 68%);right:-260px;top:40px;pointer-events:none}
+    .intro{padding:120px 0}
+    .intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px}
+    .section-label{color:var(--lime);margin-top:8px}
+    .intro-text{font-size:clamp(21px,2.5vw,31px);line-height:1.25;letter-spacing:-.025em}
+    .intro-text p+p{margin-top:28px}
+    .philosophy{background:var(--ink);color:var(--cream);padding:110px 0}
+    .philosophy-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:65px}
+    .philosophy-head h2{max-width:700px}
+    .philosophy-head p{max-width:320px;color:#bdbdb5;font-size:14px}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(245,240,231,.2)}
+    .principle{padding:34px 30px 10px 0;border-right:1px solid rgba(245,240,231,.2);min-height:235px}
+    .principle:not(:first-child){padding-left:30px}
+    .principle:last-child{border-right:0}
+    .principle-number{color:var(--lime);margin-bottom:55px}
+    .principle h3{font-size:32px;margin-bottom:13px}
+    .principle p{color:#bdbdb5;max-width:330px}
+    .studio{padding:120px 0}
+    .studio-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:start}
+    .studio h2{max-width:700px}
+    .studio-copy{font-size:18px;color:#4f4f48;max-width:620px;margin-top:30px}
+    .studio-copy p+p{margin-top:22px}
+    .benefits{margin-top:55px;display:grid;grid-template-columns:repeat(2,1fr);gap:28px;border-top:1px solid var(--line);padding-top:28px}
+    .benefit h3{font-size:20px;margin-bottom:7px}
+    .benefit p{font-size:14px;color:var(--muted)}
+    .statement{background:var(--lime);padding:45px;border-radius:var(--radius);min-height:390px;display:flex;flex-direction:column;justify-content:space-between}
+    .statement .mono{color:#353a16}
+    .statement strong{font-family:"Space Grotesk";font-size:clamp(36px,4vw,56px);line-height:.98;letter-spacing:-.05em}
+    .work-strip{padding:0 0 120px}
+    .work-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+    .work-head p{max-width:390px;color:var(--muted)}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .work-card{aspect-ratio:210/297;border-radius:14px;overflow:hidden;position:relative;background:#ddd;isolation:isolate}
+    .work-art{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px}
+    .work-card:nth-child(1) .work-art{background:#e7b98b}
+    .work-card:nth-child(2) .work-art{background:#d9d2c7}
+    .work-card:nth-child(3) .work-art{background:#e7e0bd}
+    .work-card:nth-child(4) .work-art{background:#a9c48b}
+    .work-card:nth-child(5) .work-art{background:#d7a28e}
+    .work-card:nth-child(6) .work-art{background:#b7c8dd}
+    .art-title{font-family:"Space Grotesk";font-weight:700;font-size:clamp(24px,3vw,43px);letter-spacing:-.06em}
+    .art-sub{font-family:"DM Mono";font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-top:9px}
+    .work-overlay{position:absolute;inset:0;background:rgba(25,25,25,.84);color:white;padding:25px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transform:translateY(10px);transition:.3s var(--ease);z-index:2}
+    .work-card:hover .work-overlay,.work-card:focus-within .work-overlay{opacity:1;transform:none}
+    .work-overlay h3{font-size:28px;margin-bottom:7px}
+    .work-overlay p{font-size:13px;color:#ddd;margin-bottom:17px}
+    .work-overlay .mono{color:var(--lime);margin-bottom:8px}
+    .about-cta{background:var(--lime);color:white;padding:100px 0}
+    .about-cta-inner{display:flex;align-items:end;justify-content:space-between;gap:50px}
+    .about-cta h2{max-width:800px}
+    .about-cta-copy{max-width:330px;color:#d8d6cc}
+    .about-cta .button{background:var(--lime);color:var(--ink);margin-top:22px}
+    footer{background:var(--ink);color:var(--cream);padding:65px 0 30px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:45px;padding-bottom:70px}
+    footer .logo{font-size:25px}
+    footer .logo span{color:var(--lime)}
+    .footer-desc{color:#aaa9a1;max-width:300px;margin-top:15px;font-size:14px}
+    .footer-col .mono{color:#77776f;margin-bottom:15px}
+    .footer-col a,.footer-col p{display:block;font-size:14px;margin-bottom:8px;color:#e1dfd6}
+    .footer-col a:hover{color:var(--lime)}
+    .copyright{border-top:1px solid rgba(245,240,231,.15);padding-top:20px;color:#77776f;font-size:12px;display:flex;justify-content:space-between}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){
+      .container{width:min(calc(100% - 34px),var(--max))}
+      .nav{height:72px}
+      main{padding-top:72px}
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .mobile-drawer{position:fixed;inset:72px 0 auto 0;background:var(--cream);border-bottom:1px solid var(--line);padding:25px 17px 32px;display:flex;flex-direction:column;gap:5px;transform:translateY(-120%);transition:.35s var(--ease);z-index:49}
+      .mobile-drawer.open{transform:none}
+      .mobile-drawer a{padding:15px 5px;font-family:"Space Grotesk";font-size:28px;border-bottom:1px solid var(--line)}
+      .mobile-drawer .nav-cta{margin-top:16px;text-align:center;border:0}
+      .hero-grid,.intro-grid,.studio-grid{grid-template-columns:1fr;gap:45px}
+      .about-hero{padding:80px 0 90px}
+      .hero-note{max-width:330px}
+      .intro,.studio{padding:85px 0}
+      .philosophy{padding:85px 0}
+      .philosophy-head{display:block}
+      .philosophy-head p{margin-top:22px}
+      .principles{grid-template-columns:1fr}
+      .principle,.principle:not(:first-child){border-right:0;border-bottom:1px solid rgba(245,240,231,.2);padding:28px 0;min-height:auto}
+      .principle:last-child{border-bottom:0}
+      .principle-number{margin-bottom:28px}
+      .work-strip{padding-bottom:85px}
+      .work-grid{grid-template-columns:repeat(2,1fr)}
+      .about-cta{padding:80px 0}
+      .about-cta-inner{display:block}
+      .about-cta-copy{margin-top:25px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:520px){
+      h1{font-size:clamp(52px,15vw,78px)}
+      h2{font-size:clamp(39px,12vw,55px)}
+      .hero-copy{font-size:18px}
+      .benefits{grid-template-columns:1fr}
+      .work-grid{grid-template-columns:1fr}
+      .work-card{aspect-ratio:210/297}
+      .work-overlay{opacity:1;transform:none;background:linear-gradient(transparent 45%,rgba(25,25,25,.88))}
+      .footer-grid{grid-template-columns:1fr}
+      .copyright{display:block}
+      .copyright span{display:block;margin-top:8px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="Northfield Design home">Northfield <span>Design</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta">Start a project ↗</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span class="menu-icon"><span></span><span></span><span></span></span>
+      </button>
+    </nav>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a project ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="lime-orb"></div>
+      <div class="container hero-grid reveal">
+        <div>
+          <div class="eyebrow mono">About Northfield Design</div>
+          <h1>Good design should make a difference.</h1>
+          <p class="hero-copy">We help independent businesses communicate clearly, look professional and give people a reason to remember them.</p>
+        </div>
+        <aside class="hero-note">
+          <strong>Independent by design.</strong>
+          <p>Northfield Design is a small graphic design studio based in Bristol, UK.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container intro-grid">
+        <div class="section-label mono reveal">01 / The studio</div>
+        <div class="intro-text reveal">
+          <p>Northfield Design exists to make good graphic design more accessible to independent businesses.</p>
+          <p>From a new identity to a menu, flyer or social campaign, we focus on making every piece of communication clear, considered and useful.</p>
+          <p>We keep things straightforward: understand the problem, find the right visual direction, refine the details and deliver work that is ready to use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy">
+      <div class="container">
+        <div class="philosophy-head reveal">
+          <h2>Thoughtful design, without the unnecessary fuss.</h2>
+          <p>Three things sit behind every project we work on.</p>
+        </div>
+        <div class="principles">
+          <article class="principle reveal">
+            <div class="principle-number mono">01 / Clarity</div>
+            <h3>Say it clearly.</h3>
+            <p>Good design should make the important thing easier to understand, not hide it behind decoration.</p>
+          </article>
+          <article class="principle reveal">
+            <div class="principle-number mono">02 / Typography</div>
+            <h3>Choose with purpose.</h3>
+            <p>Type, spacing, hierarchy and composition all have a job. We make those choices deliberately.</p>
+          </article>
+          <article class="principle reveal">
+            <div class="principle-number mono">03 / Purpose</div>
+            <h3>Make it useful.</h3>
+            <p>A beautiful piece of design is only valuable if it works for the business and the people seeing it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio">
+      <div class="container studio-grid">
+        <div class="reveal">
+          <div class="section-label mono">02 / Why independent</div>
+          <h2>A small studio can keep things personal.</h2>
+          <div class="studio-copy">
+            <p>Working with an independent studio means your project does not have to disappear into a huge agency process.</p>
+            <p>We can keep communication direct, decisions focused and the work centred around what your business actually needs.</p>
+          </div>
+          <div class="benefits">
+            <div class="benefit">
+              <h3>Direct communication</h3>
+              <p>Keep the conversation simple and work through decisions together.</p>
+            </div>
+            <div class="benefit">
+              <h3>Considered work</h3>
+              <p>Focus on the details that make a design feel right, not just finished.</p>
+            </div>
+            <div class="benefit">
+              <h3>Built around you</h3>
+              <p>Projects are shaped around your business, audience and practical requirements.</p>
+            </div>
+            <div class="benefit">
+              <h3>No unnecessary extras</h3>
+              <p>Clear deliverables and useful design rather than a pile of things you never asked for.</p>
+            </div>
+          </div>
+        </div>
+        <div class="statement reveal">
+          <div class="mono">Northfield / Bristol</div>
+          <strong>Small studio.<br>Big attention<br>to detail.</strong>
+          <div class="mono">Graphic design for independent businesses.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-strip">
+      <div class="container">
+        <div class="work-head reveal">
+          <div>
+            <div class="section-label mono">03 / Selected concepts</div>
+            <h2>Ideas made visible.</h2>
+          </div>
+          <p>These portfolio pieces are concept projects created to show how Northfield Design could approach different independent businesses. They are not presented as real client work.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">GOOD<br>CRUMB</div><div class="art-sub">Independent Bakery</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>Good Crumb Bakery</h3><p>Brand identity and menu design for a neighbourhood bakery.</p></div>
+          </article>
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">THE<br>STANDARD</div><div class="art-sub">Barbershop</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>The Standard</h3><p>Visual identity and price list for a modern barbershop.</p></div>
+          </article>
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">GOOD<br>HOURS</div><div class="art-sub">Neighbourhood Café</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>Good Hours Café</h3><p>Menu and social campaign concept for a local café.</p></div>
+          </article>
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">GOOD<br>GROUNDS</div><div class="art-sub">Garden Services</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>Good Grounds</h3><p>Promotional flyer and identity concept for a gardening business.</p></div>
+          </article>
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">THE<br>GOOD TABLE</div><div class="art-sub">Independent Restaurant</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>The Good Table</h3><p>Restaurant menu and seasonal campaign concept.</p></div>
+          </article>
+          <article class="work-card reveal" tabindex="0">
+            <div class="work-art"><div class="art-title">GOOD<br>THINGS</div><div class="art-sub">Local Retail</div></div>
+            <div class="work-overlay"><div class="mono">Concept project</div><h3>Good Things Shop</h3><p>Poster system and promotional graphics for an independent shop.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div class="container about-cta-inner reveal">
+        <div>
+          <div class="mono">04 / Start something</div>
+          <h2>Got a business that needs good design?</h2>
+        </div>
+        <div class="about-cta-copy">
+          <p>Tell us what you are working on, what you need and where you want to take it.</p>
+          <a class="button" href="contact.html">Start a project ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="index.html">Northfield <span>Design</span></a>
+          <p class="footer-desc">Independent graphic design for businesses in Bristol and beyond.</p>
+        </div>
+        <div class="footer-col">
+          <div class="mono">Navigate</div>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="mono">Contact</div>
+          <p>Email address to be added</p>
+          <p>Bristol, UK</p>
+        </div>
+        <div class="footer-col">
+          <div class="mono">Start a project</div>
+          <a href="contact.html">Tell us about your project ↗</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© <span id="year"></span> Northfield Design</span>
+        <span>Graphic design · Bristol, UK</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header=document.getElementById('header');
+    const menuBtn=document.getElementById('menuBtn');
+    const drawer=document.getElementById('mobileDrawer');
+
+    function updateHeader(){
+      header.classList.toggle('scrolled',window.scrollY>12);
+    }
+    updateHeader();
+    window.addEventListener('scroll',updateHeader,{passive:true});
+
+    menuBtn.addEventListener('click',()=>{
+      const open=drawer.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',String(open));
+      menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    });
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      drawer.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.setAttribute('aria-label','Open menu');
+    }));
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
